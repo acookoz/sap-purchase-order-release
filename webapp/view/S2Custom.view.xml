@@ -1,0 +1,51 @@
+<!--
+
+    Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+
+-->
+<core:View
+  	xmlns:core="sap.ui.core"
+  	xmlns="sap.m"
+  	controllerName="ui.s2p.mm.purchorder.approve.view.S2">
+	<Page
+		id="page"
+		title="{i18n>MASTER_TITLE}">
+		<content>
+			<List
+				id="list"
+				mode="{device>/listMode}"
+				select="_handleSelect">
+				<ObjectListItem
+					id="MAIN_LIST_ITEM"
+					type="{device>/listItemType}"
+					press="_handleItemPress"
+					title="{SupplierName}"
+					number="{Value}"
+                    numberUnit="{Currency}">
+					<firstStatus>
+						<ObjectStatus
+							id="ListStatusWiCreatedAt"
+							text="{parts:[{path:'WiCreatedAt'}], formatter:'ui.s2p.mm.purchorder.approve.util.Conversions.formatDaysAgo'}">
+						</ObjectStatus>
+					</firstStatus>
+					<attributes>
+						<ObjectAttribute id="ListAttributeItemDescription" text="{ItemDescriptions}" />
+						<ObjectAttribute id="ListAttributeCreatedByName" text="{CreatedByName}" />
+						<ObjectAttribute id="ListAttributeForwardedByName" text="{parts:[{path : 'ForwardedByName'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.forwardedBy'}"
+										 visible="{parts:[{path : 'ForwardedByName'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}" />
+						<ObjectAttribute id="ListAttributeSubstitutingForName" text="{parts:[{path : 'SubstitutingForName'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.substitutedBy'}"
+										 visible="{parts:[{path : 'SubstitutingForName'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}" />
+					</attributes>
+
+					<!-- @ExtensionPoint extListItemInfo: document list (S2 view) -->
+					<core:ExtensionPoint name="extListItemInfo" />
+				</ObjectListItem>
+			</List>
+		</content>
+		<footer>
+			<Bar
+				id="footer">
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

@@ -1,0 +1,16 @@
+<form:FormElement xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:layout="sap.ui.layout" 
+				  id="ItemDetailTaxCode" visible="{ =$!!{ taxCode } }">
+	<form:layoutData>
+		<layout:ResponsiveFlowLayoutData linebreak="true" margin="false"></layout:ResponsiveFlowLayoutData>
+	</form:layoutData>
+	<form:label>
+		<Label text="{i18n>view.PurchaseOrder.taxCode}"/>
+	</form:label>
+	<form:fields>
+		<Text text="{taxCodeText} ({taxCode})">
+			<layoutData>
+				<layout:ResponsiveFlowLayoutData weight="2" alignItems="End"></layout:ResponsiveFlowLayoutData>
+			</layoutData>
+		</Text>
+	</form:fields>
+</form:FormElement>

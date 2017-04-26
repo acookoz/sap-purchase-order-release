@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Dialog title="Purchase Order Details" beforeClose="onEditClose">
+		<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="false"
+			layout="ResponsiveGridLayout" backgroundDesign="Solid" labelSpanL="3" labelSpanM="3">
+			<Title text="{i18n>deliveryTitle}" titleStyle="H4"/>
+			<Label text="{i18n>deliveryAddress}" required="true" textAlign="Right"/>
+			<Select xmlns:sap.ui.core="sap.ui.core" selectedKey="{edit>/deliveryAddrNo}" id="deliveryAddrSelect"
+				items="{path: 'common>/ValueHelpResults', filters: [{ path: 'fieldName', operator: 'EQ', value1: 'DeliveryAddress'}] }">
+				<sap.ui.core:Item text="{common>text} ({common>value})" key="{common>value}"/>
+			</Select>
+			<Label text="{i18n>deliveryDateLabel}" required="true" textAlign="Right"/>
+			<DatePicker width="100%" secondaryCalendarType="Gregorian" dateValue="{edit>/deliveryDate}" valueState="{= !${edit>/deliveryDate} ? 'Error' : 'None' }"
+				valueStateText="{i18n>deliveryDateRequired}"/>
+		    <Label text="{i18n>deliveryTextLabel}" textAlign="Right"/>
+    		<TextArea width="100%" value="{edit>/deliveryText}" rows="3"/>
+		</sap.ui.layout.form:SimpleForm>
+		<sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="false"
+			layout="ResponsiveGridLayout" backgroundDesign="Solid" labelSpanL="3" labelSpanM="3">
+			<Title text="Other Details" titleStyle="H4"/>
+			<Label text="{i18n>view.PurchaseOrder.taxCode}" required="true" textAlign="Right"/>
+			<Select xmlns:sap.ui.core="sap.ui.core" id="taxCodeSelect" selectedKey="{edit>/taxCode}" items="{path: 'common>/ValueHelpResults', filters: [{ path: 'fieldName', operator: 'EQ', value1: 'taxCode'}] }">
+        		<sap.ui.core:Item text="{common>text} ({common>value})" key="{common>value}"/>
+    		</Select>
+		</sap.ui.layout.form:SimpleForm>
+		<buttons>
+			<Button text="OK" press="onEditOk"/>
+			<Button text="Cancel" press="onEditCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

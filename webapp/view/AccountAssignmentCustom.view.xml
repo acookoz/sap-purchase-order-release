@@ -1,0 +1,94 @@
+<!--
+
+    Copyright (C) 2009-2014 SAP SE or an SAP affiliate company. All rights reserved
+
+-->
+<core:View xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:layout="sap.ui.layout"
+	controllerName="zui.s2p.mm.purchorder.approve.porelease.view.AccountAssignmentCustom">
+	<Table id="accountAssignmentView_TableAcc" class="mmPurchorderApprove_padding_rl" noDataText="{i18n>view.PurchaseOrder.placeholder}"
+		headerText="{i18n>view.PurchaseOrder.accountAssignmentLabel}"
+		visible="{parts : [{path : 'Accountings'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.ItemAccountAssignmentVisibilityTrigger'}"
+		items="{Accountings}">
+		<columns>
+			<Column hAlign="Left"
+				visible="{parts : [{path : 'Accountings'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.OldAccountAssignmentVisibilityTrigger'}">
+				<header>
+					<Label text="{i18n>view.PurchaseOrder.descriptionLabel}"></Label>
+				</header>
+			</Column>
+			<Column hAlign="Left" demandPopin="true" minScreenWidth="Tablet"
+				visible="{parts : [{path : 'Accountings'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.OldAccountAssignmentVisibilityTrigger'}">
+				<header>
+					<Label text="{i18n>view.PurchaseOrder.category}"></Label>
+				</header>
+			</Column>
+			<Column hAlign="Left"
+				visible="{parts : [{path : 'Accountings'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.NewAccountAssignmentVisibilityTrigger'}">
+				<header>
+					<Label text="{i18n>view.PurchaseOrder.accountAssignmentObjects}"></Label>
+				</header>
+			</Column>
+			<Column hAlign="Left" demandPopin="true" minScreenWidth="Tablet">
+				<header>
+					<Label text="{i18n>view.PurchaseOrder.account}"></Label>
+				</header>
+			</Column>
+			<Column hAlign="Right" demandPopin="true" minScreenWidth="Tablet">
+				<header>
+					<Label text="{i18n>view.PurchaseOrder.accountAssignmentPercentage}"></Label>
+				</header>
+			</Column>
+			<Column hAlign="Center">
+				<header>
+					<Label text="Edit"></Label>
+				</header>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem type="Inactive">
+				<cells>
+					<ObjectIdentifier
+						title="{parts:[{path : 'AccountDescription'}, {path : 'AccountNumber'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonIDFormatter'}"></ObjectIdentifier>
+					<Text text="{AccountCategoryDescription}"></Text>
+					<layout:VerticalLayout>
+						<ObjectIdentifier
+							title="{parts:[{path : 'CostCentreDescription'}, {path : 'CostCentre'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonIDFormatter'}"
+							visible="{parts : [{path : 'CostCentre'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></ObjectIdentifier>
+						<Text text="{i18n>view.PurchaseOrder.accountAssignmentCostCentre}"
+							visible="{parts : [{path : 'CostCentre'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></Text>
+						<ObjectIdentifier
+							title="{parts:[{path : 'WBSElementDescription'}, {path : 'WBSElement'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonIDFormatter'}"
+							visible="{parts : [{path : 'WBSElement'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></ObjectIdentifier>
+						<Text text="{i18n>view.PurchaseOrder.accountAssignmentWBSElement}"
+							visible="{parts : [{path : 'WBSElement'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></Text>
+						<ObjectIdentifier
+							title="{parts:[{path : 'NetworkDescription'}, {path : 'Network'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonIDFormatter'}"
+							visible="{parts : [{path : 'Network'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></ObjectIdentifier>
+						<Text text="{i18n>view.PurchaseOrder.accountAssignmentNetwork}"
+							visible="{parts : [{path : 'Network'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></Text>
+						<ObjectIdentifier
+							title="{parts:[{path : 'OrderDescription'}, {path : 'Order'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonIDFormatter'}"
+							visible="{parts : [{path : 'Order'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></ObjectIdentifier>
+						<Text text="{i18n>view.PurchaseOrder.accountAssignmentOrder}"
+							visible="{parts : [{path : 'Order'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></Text>
+						<ObjectIdentifier
+							title="{parts:[{path : 'SalesOrder'}, {path : 'SalesOrderItem'}, {path : 'SalesOrderScheduleLine'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.salesOrderIDFormatter'}"
+							visible="{parts : [{path : 'SalesOrder'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></ObjectIdentifier>
+						<Text text="{i18n>view.PurchaseOrder.accountAssignmentSalesOrder}"
+							visible="{parts : [{path : 'SalesOrder'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></Text>
+						<ObjectIdentifier
+							title="{parts:[{path : 'AssetDescription'}, {path : 'Asset'}, {path : 'AssetSubNumber'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.assetIDFormatter'}"
+							visible="{parts : [{path : 'Asset'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></ObjectIdentifier>
+						<Text text="{i18n>view.PurchaseOrder.accountAssignmentAsset}"
+							visible="{parts : [{path : 'Asset'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonFieldVisibilityTrigger'}"></Text>
+					</layout:VerticalLayout>
+						<Text
+							text="{parts:[{path : 'GlAccountDescription'}, {path : 'GlAccountNumber'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.commonIDFormatter'}"></Text>
+					<ObjectNumber number="{parts:[{path: 'DistributionPercentage'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.formatNumber'}"
+						numberUnit="{parts:[{path: 'DistributionPercentage'}], formatter : 'ui.s2p.mm.purchorder.approve.util.Conversions.accountAssignmentPercentageFormatter'}"></ObjectNumber>
+					<Button press="onAccountAssignmentEdit" icon="sap-icon://edit" tooltip="Edit"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:View>

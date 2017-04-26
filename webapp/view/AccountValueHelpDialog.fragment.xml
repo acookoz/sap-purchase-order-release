@@ -1,0 +1,13 @@
+<core:FragmentDefinition xmlns="sap.m"	xmlns:core="sap.ui.core">
+	<SelectDialog
+		title="Accounts"
+		class="sapUiPopupWithPadding"
+		items="{path: 'common>/ValueHelpResults', filters: [{ path: 'fieldName', operator: 'EQ', value1: 'account'}] }"
+		search="_handleAccountSearch"
+		confirm="_handleValueHelpClose"
+		cancel="_handleValueHelpClose">
+		<StandardListItem
+			title="{common>value}"
+			description="{common>text}" />
+	</SelectDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,8 @@
+<form:formElement xmlns:form="sap.ui.layout.form" xmlns="sap.m" xmlns:layout="sap.ui.layout" id="extHeader">
+	<form:layoutData>
+		<layout:ResponsiveFlowLayoutData linebreak="true" margin="false"></layout:ResponsiveFlowLayoutData>
+	</form:layoutData>
+	<form:fields>
+		  <Button text="Edit" width="100px" id="editDetailsButton" icon="sap-icon://edit" press="onEditPress" />
+	</form:fields>
+</form:formElement>
